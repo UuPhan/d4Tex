@@ -7,4 +7,4 @@
 5. After install plugin, use Noesis reading file inside `_process` folder
 
 ### Disclamer:
-This script very simple and may not reading every files. Still need bugs tracking and improve. Any contributes and issues report is welcome
+This script very simple and may not reading every files. Still need bugs tracking and improve. Any contributes and issues report are welcome
