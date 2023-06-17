@@ -25,16 +25,25 @@ def noepyLoadRGBA(data, texList):
     
     bs.seek(6)
     textureData = bs.readBytes(size) #read   
-    
+
     if fmeta == 41:
         textureData = rapi.imageDecodeDXT(textureData, width, height, noesis.FOURCC_BC4)
         
     if fmeta == 42:
         textureData = rapi.imageDecodeDXT(textureData, width, height, noesis.FOURCC_BC5)
         
+    if fmeta == 23:
+        width = int(size / (height * 4))
+        format = 'r8 g8 b8 a8'
+        textureData = rapi.imageDecodeRaw(textureData, width, height, format)
+        
     if fmeta == 46 or fmeta == 9:
         width = int(size / (height * 0.5))
-        textureData = rapi.imageDecodeDXT(textureData, width, height, noesis.FOURCC_BC1)    
+        textureData = rapi.imageDecodeDXT(textureData, width, height, noesis.FOURCC_BC1)  
+
+    if fmeta == 47 or fmeta == 48 or fmeta == 10:
+        width = int(size / (height * 1))
+        textureData = rapi.imageDecodeDXT(textureData, width, height, noesis.FOURCC_BC3)         
         
     if fmeta == 49:
         width = int(size / (height * 1))
